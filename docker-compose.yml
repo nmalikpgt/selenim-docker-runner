@@ -36,7 +36,7 @@ services:
       - HUB_HOST=hub
 
   testCaseExecution:
-    image: demo-tests-first
+    image: nmalik1986/selenium
     depends_on:
       - firefox
       - chrome
