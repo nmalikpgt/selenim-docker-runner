@@ -1,0 +1,49 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:4.10.0-20230607
+    ports:
+      - "4444:4444"
+    
+  chrome:
+    image: selenium/node-chrome:4.10.0-20230607
+    shm_size: '2g'
+    depends_on:
+      - hub
+    deploy:
+      replicas: 4
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=1
+      - HUB_HOST=hub
+      
+  firefox:
+    image: selenium/node-firefox
+    shm_size: '2g'
+    depends_on:
+      - hub
+    deploy:
+      replicas: 4  
+    environment:
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=1
+      - HUB_HOST=hub
+
+  testCaseExecution:
+    image: demo-tests-first
+    depends_on:
+      - firefox
+      - chrome
+    environment:
+      - HUB_HOST=hub  
+    volumes:
+      - ./results:/selenium-docker/test-output
+      
+
+  
