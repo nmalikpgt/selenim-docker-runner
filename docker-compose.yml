@@ -3,7 +3,7 @@ services:
   hub:
     image: selenium/hub:4.10.0-20230607
     ports:
-      - "4445:4444"
+      - "4444:4444"
     
   chrome:
     image: selenium/node-chrome:4.10.0-20230607
@@ -37,6 +37,11 @@ services:
 
   testCaseExecution:
     image: nmalik1986/selenium
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     depends_on:
       - firefox
       - chrome
