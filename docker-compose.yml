@@ -37,11 +37,6 @@ services:
 
   testCaseExecution:
     image: nmalik1986/selenium
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://10.10.10.215:4444/wd/hub/status"]
-      interval: 30s
-      timeout: 10s
-      retries: 20
     depends_on:
       - firefox
       - chrome
