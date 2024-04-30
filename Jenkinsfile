@@ -7,17 +7,22 @@ agent any
         steps{
         script
         {
-        bat "docker-compose up"
+        bat "docker-compose -f grid.yml up -d"
         }
       }
     }
 
-    stage('Shut Down Grid')
+    stage('Run Test Cases')
     {
         steps{
-        bat "docker-compose down"
+        bat "docker-compose -f test-suites.yml up"
     }
     }
-
+   post{
+   always{
+   bat "docker-compose -f grid.yml down"
+   bat "docker-compose -f test-suites.yml down"
     }
+   }
+}
 }
