@@ -18,11 +18,11 @@ agent any
         bat "docker-compose -f test-suites.yml up"
     }
     }
-   post{
+}
+post{
    always{
    bat "docker-compose -f grid.yml down"
    bat "docker-compose -f test-suites.yml down"
     }
    }
-}
 }
