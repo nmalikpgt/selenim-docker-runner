@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>TestNG:  Demo Automation</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Demo Automation</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>6/1/2</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Apr 29 23:51:21 GMT 2024</td>
+</tr>
+<tr><td>Total time:</td><td>180 seconds (180856 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='testcases.CustomerRegistration3.customerRegistration()'><b>customerRegistration</b><br>Test class: testcases.CustomerRegistration3</td>
+<td><div><pre>java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:106)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:45)
+	at flightreservation.RegistrationPage.&lt;init&gt;(RegistrationPage.java:33)
+	at testcases.CustomerRegistration3.customerRegistration(CustomerRegistration3.java:12)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace193456586", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace193456586'><pre>java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:220)
+	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:106)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:45)
+	at flightreservation.RegistrationPage.&lt;init&gt;(RegistrationPage.java:33)
+	at testcases.CustomerRegistration3.customerRegistration(CustomerRegistration3.java:12)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+</pre></div></td>
+<td>0</td>
+<td>testcases.CustomerRegistration3@776aec5c</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='testcases.CustomerRegistration2.clickFlightSearchButton()'><b>clickFlightSearchButton</b><br>Test class: testcases.CustomerRegistration2</td>
+<td></td>
+<td>0</td>
+<td>testcases.CustomerRegistration2@5b7a5baa</td></tr>
+<tr>
+<td title='testcases.CustomerRegistration1.clickFlightSearchButton()'><b>clickFlightSearchButton</b><br>Test class: testcases.CustomerRegistration1</td>
+<td></td>
+<td>1</td>
+<td>testcases.CustomerRegistration1@5bf0d49</td></tr>
+<tr>
+<td title='testcases.CustomerRegistration2.customerRegistration()'><b>customerRegistration</b><br>Test class: testcases.CustomerRegistration2</td>
+<td></td>
+<td>2</td>
+<td>testcases.CustomerRegistration2@5b7a5baa</td></tr>
+<tr>
+<td title='testcases.CustomerRegistration1.customerRegistration()'><b>customerRegistration</b><br>Test class: testcases.CustomerRegistration1</td>
+<td></td>
+<td>2</td>
+<td>testcases.CustomerRegistration1@5bf0d49</td></tr>
+<tr>
+<td title='testcases.CustomerRegistration2.flightSearch()'><b>flightSearch</b><br>Test class: testcases.CustomerRegistration2</td>
+<td></td>
+<td>3</td>
+<td>testcases.CustomerRegistration2@5b7a5baa</td></tr>
+<tr>
+<td title='testcases.CustomerRegistration1.flightSearch()'><b>flightSearch</b><br>Test class: testcases.CustomerRegistration1</td>
+<td></td>
+<td>2</td>
+<td>testcases.CustomerRegistration1@5bf0d49</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='testcases.CustomerRegistration3.clickFlightSearchButton()'><b>clickFlightSearchButton</b><br>Test class: testcases.CustomerRegistration3</td>
+<td><div><pre>java.lang.Throwable: Method CustomerRegistration3.clickFlightSearchButton()[pri:0, instance:testcases.CustomerRegistration3@776aec5c] depends on not successfully finished methods
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace194172603", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace194172603'><pre>java.lang.Throwable: Method CustomerRegistration3.clickFlightSearchButton()[pri:0, instance:testcases.CustomerRegistration3@776aec5c] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:888)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+<tr>
+<td title='testcases.CustomerRegistration3.flightSearch()'><b>flightSearch</b><br>Test class: testcases.CustomerRegistration3</td>
+<td><div><pre>java.lang.Throwable: Method CustomerRegistration3.flightSearch()[pri:0, instance:testcases.CustomerRegistration3@776aec5c] depends on not successfully finished methods
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+... Removed 3 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace816259478", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace816259478'><pre>java.lang.Throwable: Method CustomerRegistration3.flightSearch()[pri:0, instance:testcases.CustomerRegistration3@776aec5c] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:888)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+</table><p>
+</body>
+</html>

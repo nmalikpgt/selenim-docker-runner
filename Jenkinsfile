@@ -23,6 +23,7 @@ post{
    always{
    bat "docker-compose -f grid.yml down"
    bat "docker-compose -f test-suites.yml down"
+   archiveArtifacts artifacts: 'results/emailable-report.html', fingerprint: true
     }
    }
 }

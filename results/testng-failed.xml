@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="classes" name="Failed suite [Testing]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="classes" name="Demo Automation(failed)">
+    <classes>
+      <class name="testcases.CustomerRegistration3">
+        <methods>
+          <include name="flightSearch"/>
+          <include name="customerRegistration"/>
+          <include name="clickFlightSearchButton"/>
+          <include name="setupDriver"/>
+        </methods>
+      </class> <!-- testcases.CustomerRegistration3 -->
+    </classes>
+  </test> <!-- Demo Automation(failed) -->
+</suite> <!-- Failed suite [Testing] -->
