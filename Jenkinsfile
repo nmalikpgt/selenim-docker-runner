@@ -15,7 +15,7 @@ agent any
     stage('Run Test Cases')
     {
         steps{
-        bat "docker-compose -f test-suites.yml up"
+        bat "docker-compose -f test-suites.yml up --pull=always"
     }
     }
 }
