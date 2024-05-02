@@ -16,6 +16,12 @@ agent any
     {
         steps{
         bat "docker-compose -f test-suites.yml up --pull=always"
+        script{
+            if(fileExists('results/testng-failed.xml'))
+            {
+                error('failed tests cases')
+            }
+                }
     }
     }
 }
