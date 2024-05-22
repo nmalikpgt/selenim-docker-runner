@@ -22,7 +22,7 @@ services:
   firefox:
     image: selenium/node-firefox
     depends_on:
-      hub:
+      chrome:
         condition: service_healthy
     shm_size: '1g'
     deploy:
