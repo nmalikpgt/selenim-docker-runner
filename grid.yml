@@ -10,7 +10,7 @@ services:
     depends_on:
       - hub
     deploy:
-      replicas: 0
+      replicas: 1
     env_file: .env
 
   firefox:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - hub
     deploy:
-      replicas: 0
+      replicas: 1
     env_file: .env
 
 
