@@ -4,11 +4,17 @@ services:
     image: selenium/hub
     ports:
       - "4444:4444"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U example"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
   chrome:
     image: selenium/node-chrome
     shm_size: '1g'
     depends_on:
-      - hub
+      hub:
+        condition: service_healthy
     deploy:
       replicas: 1
     env_file: .env
@@ -17,7 +23,8 @@ services:
     image: selenium/node-firefox
     shm_size: '1g'
     depends_on:
-      - hub
+      hub:
+        condition: service_healthy
     deploy:
       replicas: 1
     env_file: .env
