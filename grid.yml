@@ -21,10 +21,10 @@ services:
 
   firefox:
     image: selenium/node-firefox
-    shm_size: '1g'
     depends_on:
       hub:
         condition: service_healthy
+    shm_size: '1g'
     deploy:
       replicas: 1
     env_file: .env
