@@ -1,7 +1,7 @@
 pipeline{
 agent any
 environment {
-        DOCKER_IMAGE = 'nmalik1986/nmalik1986/selenium'
+        DOCKER_IMAGE = 'nmalik1986/selenium'
             }
     stages{
 
@@ -16,17 +16,22 @@ environment {
     }
 
     stage('Pull Docker Image') {
-    steps {
-        script {
-            sh "docker pull ${DOCKER_IMAGE}"
-        }
-    }
-}
+                steps {
+                    script {
+                        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                            // Login to Docker Hub
+                            sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                            // Pull the Docker image from Docker Hub
+                            sh "docker pull ${DOCKER_IMAGE}"
+                        }
+                    }
+                }
+            }
 
     stage('Run Test Cases')
     {
         steps{
-        sh "docker-compose -f test-suites.yml up --pull=always"
+        sh "docker-compose -f test-suites.yml up"
         script{
             if(fileExists('results/testng-failed.xml'))
             {
