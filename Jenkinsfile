@@ -7,7 +7,7 @@ agent any
         steps{
         script
         {
-        bat "docker-compose -f grid.yml up -d"
+        sh "docker-compose -f grid.yml up -d"
         }
       }
     }
@@ -15,7 +15,7 @@ agent any
     stage('Run Test Cases')
     {
         steps{
-        bat "docker-compose -f test-suites.yml up --pull=always"
+        sh "docker-compose -f test-suites.yml up --pull=always"
         script{
             if(fileExists('results/testng-failed.xml'))
             {
@@ -27,8 +27,8 @@ agent any
 }
 post{
    always{
-   bat "docker-compose -f grid.yml down"
-   bat "docker-compose -f test-suites.yml down"
+   sh "docker-compose -f grid.yml down"
+   sh "docker-compose -f test-suites.yml down"
    archiveArtifacts artifacts: 'results/emailable-report.html', fingerprint: true
     }
    }
