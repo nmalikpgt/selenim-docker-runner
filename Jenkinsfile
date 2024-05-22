@@ -1,5 +1,8 @@
 pipeline{
 agent any
+environment {
+        DOCKER_IMAGE = 'nmalik1986/nmalik1986/selenium'
+            }
     stages{
 
     stage('Run Selenium Grid')
@@ -11,6 +14,14 @@ agent any
         }
       }
     }
+
+    stage('Pull Docker Image') {
+    steps {
+        script {
+            sh "docker pull ${DOCKER_IMAGE}"
+        }
+    }
+}
 
     stage('Run Test Cases')
     {
