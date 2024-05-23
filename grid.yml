@@ -14,19 +14,34 @@ services:
     depends_on:
       hub:
         condition: service_healthy
+    env_file: .env
+    links:
+      - hub
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://hub:4444/wd/hub/status || exit 1" ]
+      interval: 20s
+      timeout: 10s
+      retries: 10
     shm_size: '1g'
     deploy:
       replicas: 1
-    env_file: .env
 
   firefox:
     image: selenium/node-firefox
     depends_on:
       hub:
         condition: service_healthy
+    env_file: .env
+    links:
+      - hub
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://hub:4444/wd/hub/status || exit 1" ]
+      interval: 20s
+      timeout: 10s
+      retries: 10
     shm_size: '1g'
     deploy:
       replicas: 1
-    env_file: .env
+
 
 
