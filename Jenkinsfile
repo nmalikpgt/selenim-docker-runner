@@ -4,6 +4,18 @@ environment {
         DOCKER_IMAGE = 'nmalik1986/selenium'
             }
     stages{
+    stage('Pull Docker Image') {
+                    steps {
+                        script {
+                            withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                // Login to Docker Hub
+                                sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                                // Pull the Docker image from Docker Hub
+                                sh "docker pull ${DOCKER_IMAGE}"
+                            }
+                        }
+                    }
+                }
 
     stage('Run Selenium Grid')
     {
@@ -14,19 +26,6 @@ environment {
         }
       }
     }
-
-    stage('Pull Docker Image') {
-                steps {
-                    script {
-                        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                            // Login to Docker Hub
-                            sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
-                            // Pull the Docker image from Docker Hub
-                            sh "docker pull ${DOCKER_IMAGE}"
-                        }
-                    }
-                }
-            }
 
     stage('Run Test Cases')
     {
