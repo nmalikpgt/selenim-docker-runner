@@ -11,19 +11,23 @@ services:
       retries: 10
   chrome:
     image: selenium/node-chrome
+    healthcheck:
+      test: [ "CMD-SHELL", "ch_isready -U example" ]
+      interval: 20s
+      timeout: 10s
+      retries: 10
     shm_size: '1g'
-    depends_on:
-      hub:
-        condition: service_healthy
     deploy:
       replicas: 1
     env_file: .env
 
   firefox:
     image: selenium/node-firefox
-    depends_on:
-      chrome:
-        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "fr_isready -U example" ]
+      interval: 20s
+      timeout: 10s
+      retries: 10
     shm_size: '1g'
     deploy:
       replicas: 1
