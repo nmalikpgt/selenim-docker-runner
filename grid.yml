@@ -1,7 +1,8 @@
 #version: "3"
 services:
-  hub:
+  selenium-hub:
     image: selenium/hub
+    container_name: selenium-hub
     ports:
       - "4444:4444"
     healthcheck:
@@ -12,13 +13,13 @@ services:
   chrome:
     image: selenium/node-chrome
     depends_on:
-      hub:
+      selenium-hub:
         condition: service_healthy
     env_file: .env
     links:
-      - hub
+      - selenium-hub
     healthcheck:
-      test: [ "CMD-SHELL", "curl -f http://hub:4444/wd/hub/status || exit 1" ]
+      test: [ "CMD-SHELL", "curl -f http://selenium-hub:4444/wd/hub/status || exit 1" ]
       interval: 20s
       timeout: 10s
       retries: 10
@@ -29,13 +30,13 @@ services:
   firefox:
     image: selenium/node-firefox
     depends_on:
-      hub:
+      selenium-hub:
         condition: service_healthy
     env_file: .env
     links:
-      - hub
+      - selenium-hub
     healthcheck:
-      test: [ "CMD-SHELL", "curl -f http://hub:4444/wd/hub/status || exit 1" ]
+      test: [ "CMD-SHELL", "curl -f http://selenium-hub:4444/wd/hub/status || exit 1" ]
       interval: 20s
       timeout: 10s
       retries: 10
